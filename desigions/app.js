@@ -27,7 +27,8 @@ const copy = {
     ctaEyebrow: "From habit to operating system",
     ctaTitle: "marql makes every one of these loops faster.",
     ctaBody: "It connects your live data, ranks decisions by money at stake, shows every source and tracks what each approved action was worth — across every store.",
-    tryMarql: "Try marql · 1st month free",
+    tryMarql: "Try marql",
+    freeMonthNote: "1st month free",
     shareResult: "Share result",
     linkCopied: "Link copied!",
     shareLead: "My marql decision system result:"
@@ -60,7 +61,8 @@ const copy = {
     ctaEyebrow: "От привычки к операционной системе",
     ctaTitle: "marql ускоряет каждый из этих циклов.",
     ctaBody: "Он подключает живые данные, ранжирует решения по деньгам на кону, показывает источники и измеряет ценность каждого одобренного действия во всей сети.",
-    tryMarql: "Попробовать marql · 1-й месяц бесплатно",
+    tryMarql: "Попробовать marql",
+    freeMonthNote: "1-й месяц бесплатно",
     shareResult: "Поделиться результатом",
     linkCopied: "Ссылка скопирована!",
     shareLead: "Мой результат системы решений marql:"
