@@ -9,7 +9,7 @@
       content="A three-question marql game about decision velocity, trusted signals and measurable retail impact."
     />
     <title>Decision velocity — a marql retail game</title>
-    <link rel="stylesheet" href="../styles.css?v=20261006-7" />
+    <link rel="stylesheet" href="../styles.css?v=20261006-8" />
     <link rel="stylesheet" href="styles.css?v=20261006-6" />
   </head>
   <body>
@@ -145,13 +145,19 @@
                 <a class="cta-link cta-pill" href="https://marql.one/" target="_blank" rel="noreferrer" data-i18n="tryMarql">Try marql</a>
                 <p class="cta-offer" data-i18n="freeMonthNote">1st month free</p>
               </div>
-              <button class="share-button" id="shareButton" type="button" data-i18n="shareResult">Share result</button>
+              <div class="share-control">
+                <button class="share-button" id="shareButton" type="button" data-i18n="shareResult" aria-expanded="false" aria-controls="shareMenu">Share result</button>
+                <div class="share-menu" id="shareMenu" hidden>
+                  <a class="share-platform linkedin" id="linkedinShare" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a class="share-platform x-twitter" id="xShare" href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+                </div>
+              </div>
             </div>
           </article>
         </section>
       </main>
     </div>
 
-    <script src="app.js?v=20261006-5"></script>
+    <script src="app.js?v=20261006-6"></script>
   </body>
 </html>

@@ -9,7 +9,7 @@
       content="A five-decision retail operations game by marql. Compare your calls with other operators and discover your management style."
     />
     <title>Retail instincts — a marql decision game</title>
-    <link rel="stylesheet" href="styles.css?v=20261006-7" />
+    <link rel="stylesheet" href="styles.css?v=20261006-8" />
   </head>
   <body>
     <div class="site-shell">
@@ -165,7 +165,13 @@
               <h3 id="profileHeading"></h3>
               <p id="profileBody"></p>
               <div class="strength-list" id="strengthList"></div>
-              <button class="share-button" id="shareButton" type="button" data-i18n="shareResult">Share result</button>
+              <div class="share-control">
+                <button class="share-button" id="shareButton" type="button" data-i18n="shareResult" aria-expanded="false" aria-controls="shareMenu">Share result</button>
+                <div class="share-menu" id="shareMenu" hidden>
+                  <a class="share-platform linkedin" id="linkedinShare" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a class="share-platform x-twitter" id="xShare" href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+                </div>
+              </div>
             </article>
 
             <article class="cta-card">
@@ -184,6 +190,6 @@
       </main>
     </div>
 
-    <script src="app.js?v=20261006-5"></script>
+    <script src="app.js?v=20261006-6"></script>
   </body>
 </html>

@@ -30,7 +30,6 @@ const copy = {
     tryMarql: "Try marql",
     freeMonthNote: "1st month free",
     shareResult: "Share result",
-    linkCopied: "Link copied!",
     shareLead: "My marql decision system result:"
   },
   ru: {
@@ -64,7 +63,6 @@ const copy = {
     tryMarql: "Попробовать marql",
     freeMonthNote: "1-й месяц бесплатно",
     shareResult: "Поделиться результатом",
-    linkCopied: "Ссылка скопирована!",
     shareLead: "Мой результат системы решений marql:"
   }
 };
@@ -195,6 +193,9 @@ const elements = {
   start: document.querySelector("#startButton"),
   brand: document.querySelector("#brandButton"),
   share: document.querySelector("#shareButton"),
+  shareMenu: document.querySelector("#shareMenu"),
+  linkedinShare: document.querySelector("#linkedinShare"),
+  xShare: document.querySelector("#xShare"),
   continue: document.querySelector("#continueButton"),
   kicker: document.querySelector("#questionKicker"),
   progressCurrent: document.querySelector("#progressCurrent"),
@@ -359,41 +360,33 @@ function resetGame() {
   showScreen("intro");
 }
 
-async function shareResult() {
+function shareResult() {
+  const willOpen = elements.shareMenu.hidden;
+  elements.shareMenu.hidden = !willOpen;
+  elements.share.setAttribute("aria-expanded", String(willOpen));
+  if (!willOpen) return;
+
   const resultTitle = document.querySelector("#resultTitle").textContent;
-  const shareData = {
-    title: document.title,
-    text: `${t("shareLead")} ${resultTitle}`,
-    url: window.location.href
-  };
-
-  if (navigator.share) {
-    try {
-      await navigator.share(shareData);
-      return;
-    } catch (error) {
-      if (error.name === "AbortError") return;
-    }
-  }
-
-  try {
-    await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
-  } catch {
-    const field = document.createElement("textarea");
-    field.value = `${shareData.text} ${shareData.url}`;
-    field.style.position = "fixed";
-    field.style.opacity = "0";
-    document.body.append(field);
-    field.select();
-    document.execCommand("copy");
-    field.remove();
-  }
-
-  elements.share.textContent = t("linkCopied");
-  window.setTimeout(() => {
-    elements.share.textContent = t("shareResult");
-  }, 1800);
+  const text = `${t("shareLead")} ${resultTitle}`;
+  const url = window.location.href;
+  elements.linkedinShare.href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+  elements.xShare.href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(`${text} ${url}`)}`;
 }
+
+document.addEventListener("click", (event) => {
+  if (!event.target.closest(".share-control") && !elements.shareMenu.hidden) {
+    elements.shareMenu.hidden = true;
+    elements.share.setAttribute("aria-expanded", "false");
+  }
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !elements.shareMenu.hidden) {
+    elements.shareMenu.hidden = true;
+    elements.share.setAttribute("aria-expanded", "false");
+    elements.share.focus();
+  }
+});
 
 document.querySelectorAll(".language-button").forEach((button) => {
   button.addEventListener("click", () => {
