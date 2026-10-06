@@ -277,6 +277,10 @@ a:focus-visible {
 
 .start-button {
   margin-top: 42px;
+  min-width: 210px;
+  justify-content: center;
+  padding-right: 28px;
+  padding-left: 28px;
 }
 
 .mascot-stage {
@@ -1152,15 +1156,7 @@ a:focus-visible {
 }
 
 .cta-card::after {
-  content: "↗";
-  position: absolute;
-  right: -18px;
-  bottom: -66px;
-  color: var(--lime);
-  font-size: 210px;
-  font-weight: 200;
-  line-height: 1;
-  opacity: 0.08;
+  content: none;
 }
 
 .cta-card > p:not(.eyebrow) {
@@ -1173,14 +1169,23 @@ a:focus-visible {
   z-index: 1;
   display: inline-flex;
   align-items: center;
-  gap: 26px;
+  justify-content: center;
+  min-height: 58px;
   margin-top: 30px;
-  padding-bottom: 7px;
-  color: var(--lime);
-  border-bottom: 1px solid var(--lime);
-  font-size: 18px;
+  padding: 0 30px;
+  color: var(--navy);
+  background: var(--lime);
+  border: 1px solid var(--lime);
+  border-radius: 999px;
+  font-size: 16px;
   font-weight: 700;
   text-decoration: none;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.cta-link:hover {
+  background: #b4ff3d;
+  transform: translateY(-2px);
 }
 
 .restart-button {
