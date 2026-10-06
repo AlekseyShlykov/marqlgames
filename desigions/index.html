@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#010d1f" />
+    <meta
+      name="description"
+      content="A three-question marql game about decision velocity, trusted signals and measurable retail impact."
+    />
+    <title>Decision velocity — a marql retail game</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="Site header">
+        <button class="brand" id="brandButton" type="button" aria-label="Back to the start">
+          <span class="brand-logo-shell">
+            <img class="brand-logo" src="../assets/marql-logo-light.svg" alt="marql" />
+          </span>
+        </button>
+
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="language-button is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="language-button" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+      </header>
+
+      <main id="app" tabindex="-1">
+        <section class="screen intro-screen knowledge-intro is-active" id="introScreen" aria-labelledby="introTitle">
+          <div class="intro-copy">
+            <h1 id="introTitle" data-i18n="introTitle">How fast does your store turn signals into revenue?</h1>
+            <p class="intro-lead" data-i18n="introLead">
+              Test the decision system behind your store — then leave with three practices you can use today.
+            </p>
+            <button class="primary-button start-button" id="startButton" type="button">
+              <span data-i18n="start">start</span>
+              <span class="button-icon" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="mascot-stage velocity-stage" aria-label="marql receipt mascot">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="velocity-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="mascot-halo" aria-hidden="true"></div>
+            <img src="../assets/receipt-mascot-animated.svg" alt="A cheerful receipt mascot waving hello" />
+            <div class="mascot-note note-top" aria-hidden="true">
+              <span data-i18n="signal">SIGNAL</span>
+              <strong>09:04</strong>
+            </div>
+            <div class="mascot-note note-bottom" aria-hidden="true">
+              <span data-i18n="averageTime">AVERAGE TEST TIME</span>
+              <strong data-i18n="averageTimeValue">3:23 MIN</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen game-screen knowledge-game" id="gameScreen" aria-live="polite" aria-labelledby="questionTitle">
+          <div class="game-header">
+            <div>
+              <p class="eyebrow dark" id="questionKicker">Decision 01</p>
+              <p class="progress-copy"><span id="progressCurrent">1</span> / 3</p>
+            </div>
+            <div class="progress-track three-step" aria-label="Question progress">
+              <span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="question-layout">
+            <aside class="signal-panel" aria-label="Decision signal">
+              <p class="signal-label" id="signalLabel"></p>
+              <p class="signal-value" id="signalValue"></p>
+              <p class="signal-detail" id="signalDetail"></p>
+              <div class="signal-bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="question-mascot motion-roll" id="questionMascot" role="img" aria-label="">
+                <span class="question-mascot-halo" aria-hidden="true"></span>
+                <img id="questionMascotImage" src="../assets/Group.svg" alt="" />
+                <span class="question-mascot-shadow" aria-hidden="true"></span>
+              </div>
+            </aside>
+
+            <div class="question-panel">
+              <div class="question-heading">
+                <p class="question-tag" id="questionTag">REVENUE VELOCITY</p>
+                <h2 id="questionTitle"></h2>
+                <p id="questionContext"></p>
+              </div>
+
+              <div class="options-grid" id="optionsGrid" role="radiogroup" aria-label="Answer options"></div>
+
+              <div class="lock-panel" id="lockPanel" hidden>
+                <div>
+                  <p class="eyebrow dark" data-i18n="decisionLogged">Decision logged</p>
+                  <p data-i18n="revealLater">We will unpack the operating logic at the end.</p>
+                </div>
+                <button class="primary-button continue-button" id="continueButton" type="button">
+                  <span data-i18n="next">Next question</span>
+                  <span class="button-icon" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen result-screen knowledge-result" id="resultScreen" aria-live="polite" aria-labelledby="resultTitle">
+          <div class="result-intro result-intro-grid">
+            <div>
+              <h2 id="resultTitle"></h2>
+              <p id="resultSummary"></p>
+            </div>
+            <div class="result-score" aria-label="Quiz score">
+              <span data-i18n="score">SCORE</span>
+              <strong id="scoreValue">3 / 3</strong>
+              <div class="score-dots" id="scoreDots" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+
+          <div class="answer-review" id="answerReview"></div>
+
+          <article class="today-plan">
+            <div>
+              <p class="eyebrow dark" data-i18n="todayLabel">A 30-minute start</p>
+              <h3 data-i18n="todayTitle">Build one complete decision loop today.</h3>
+            </div>
+            <ol>
+              <li><span>01</span><p data-i18n="todayOne">Choose one live issue and write down the money at stake.</p></li>
+              <li><span>02</span><p data-i18n="todayTwo">Name the owner, source, action and decision deadline.</p></li>
+              <li><span>03</span><p data-i18n="todayThree">Set the comparison and date that will prove the result.</p></li>
+            </ol>
+          </article>
+
+          <article class="cta-card knowledge-cta">
+            <div>
+              <p class="eyebrow" data-i18n="ctaEyebrow">From habit to operating system</p>
+              <h3 data-i18n="ctaTitle">marql makes every one of these loops faster.</h3>
+              <p data-i18n="ctaBody">
+                It connects your live data, ranks decisions by money at stake, shows every source and tracks what each approved action was worth — across every store.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="cta-link cta-pill" href="https://marql.one/" target="_blank" rel="noreferrer">
+                <span data-i18n="tryMarql">See what marql can do</span><span aria-hidden="true">↗</span>
+              </a>
+              <button class="restart-button" id="restartButton" type="button" data-i18n="restart">Play again</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

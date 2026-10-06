@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#010d1f" />
+    <meta
+      name="description"
+      content="A five-decision retail operations game by marql. Compare your calls with other operators and discover your management style."
+    />
+    <title>Retail instincts — a marql decision game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="Site header">
+        <button class="brand" id="brandButton" type="button" aria-label="Back to the start">
+          <span class="brand-logo-shell">
+            <img class="brand-logo" src="assets/marql-logo-light.svg" alt="marql" />
+          </span>
+        </button>
+
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="language-button is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="language-button" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+      </header>
+
+      <main id="app" tabindex="-1">
+        <section class="screen intro-screen main-intro is-active" id="introScreen" aria-labelledby="introTitle">
+          <div class="intro-copy">
+            <h1 id="introTitle" data-i18n="introTitle">How good is your retail instinct?</h1>
+            <p class="intro-lead" data-i18n="introLead">
+              Compare your decisions with other operations managers and discover how good you are at running a store.
+            </p>
+            <button class="primary-button start-button" id="startButton" type="button">
+              <span data-i18n="start">start</span>
+              <span class="button-icon" aria-hidden="true">↗</span>
+            </button>
+          </div>
+
+          <div class="mascot-stage" aria-label="marql receipt mascot">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="mascot-halo" aria-hidden="true"></div>
+            <img src="assets/receipt-mascot-animated.svg" alt="A cheerful receipt mascot waving hello" />
+            <div class="mascot-note note-top" aria-hidden="true">
+              <span>LIVE</span>
+              <strong>€ 2,900 / wk</strong>
+            </div>
+            <div class="mascot-note note-bottom" aria-hidden="true">
+              <span data-i18n="averageTime">AVERAGE TEST TIME</span>
+              <strong data-i18n="averageTimeValue">3:23 MIN</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen game-screen" id="gameScreen" aria-live="polite" aria-labelledby="questionTitle">
+          <div class="game-header">
+            <div>
+              <p class="eyebrow dark" id="questionKicker">Situation 01</p>
+              <p class="progress-copy"><span id="progressCurrent">1</span> / 5</p>
+            </div>
+            <div class="progress-track" aria-label="Question progress">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="question-layout">
+            <aside class="signal-panel" aria-label="Store signal">
+              <p class="signal-label" id="signalLabel">Weekly sales at risk</p>
+              <p class="signal-value" id="signalValue">€ 6,400</p>
+              <p class="signal-detail" id="signalDetail">8 days until regular delivery</p>
+              <div class="signal-bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="question-mascot" id="questionMascot" role="img" aria-label="">
+                <span class="question-mascot-halo" aria-hidden="true"></span>
+                <img id="questionMascotImage" src="assets/Group.svg" alt="" />
+                <span class="question-mascot-shadow" aria-hidden="true"></span>
+              </div>
+            </aside>
+
+            <div class="question-panel">
+              <div class="question-heading">
+                <p class="question-tag" id="questionTag">INVENTORY</p>
+                <h2 id="questionTitle"></h2>
+                <p id="questionContext"></p>
+              </div>
+
+              <div class="options-grid" id="optionsGrid" role="radiogroup" aria-label="Decision options"></div>
+
+              <div class="peer-panel" id="peerPanel" hidden>
+                <div class="peer-heading">
+                  <div>
+                    <p class="eyebrow dark" data-i18n="peerPulse">Peer pulse</p>
+                    <h3 data-i18n="peerTitle">How operators answered</h3>
+                  </div>
+                  <p class="peer-match" id="peerMatch"></p>
+                </div>
+                <div class="peer-bars" id="peerBars"></div>
+                <p class="peer-note" data-i18n="peerNote">Illustrative benchmark for this game.</p>
+                <button class="primary-button continue-button" id="continueButton" type="button">
+                  <span data-i18n="next">Next situation</span>
+                  <span class="button-icon" aria-hidden="true">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen result-screen" id="resultScreen" aria-live="polite" aria-labelledby="resultTitle">
+          <div class="result-intro">
+            <h2 id="resultTitle">You are — The balanced operator</h2>
+            <p id="resultSummary"></p>
+          </div>
+
+          <div class="result-grid">
+            <div class="risk-card">
+              <div class="card-heading">
+                <span data-i18n="decisionStyle">Decision style</span>
+                <strong id="riskScore">52 / 100</strong>
+              </div>
+
+              <div class="risk-plot" id="riskPlot">
+                <svg viewBox="0 0 720 170" role="img" aria-label="Your position from conservative to bold">
+                  <defs>
+                    <linearGradient id="areaFill" x1="0" x2="1">
+                      <stop offset="0" stop-color="#faf9f0" stop-opacity="0.05" />
+                      <stop offset="0.55" stop-color="#9ff100" stop-opacity="0.24" />
+                      <stop offset="1" stop-color="#ff5ca8" stop-opacity="0.18" />
+                    </linearGradient>
+                  </defs>
+                  <path class="plot-grid" d="M40 20V145M200 20V145M360 20V145M520 20V145M680 20V145" />
+                  <path class="plot-area" d="M40 132 C150 120, 225 82, 330 96 S530 25, 680 52 L680 145 L40 145 Z" />
+                  <path class="plot-line" d="M40 132 C150 120, 225 82, 330 96 S530 25, 680 52" />
+                  <g id="decisionDots"></g>
+                </svg>
+                <div class="plot-marker" id="plotMarker">
+                  <span data-i18n="you">YOU</span>
+                </div>
+              </div>
+
+              <div class="scale-labels">
+                <span data-i18n="conservative">Conservative</span>
+                <span data-i18n="calculated">Calculated</span>
+                <span data-i18n="bold">Bold</span>
+              </div>
+            </div>
+
+            <div class="score-stack">
+              <article class="score-card lime-card">
+                <p data-i18n="decisionQuality">Decision quality</p>
+                <strong id="qualityScore">80</strong>
+                <span>/ 100</span>
+              </article>
+              <article class="score-card peer-card">
+                <p data-i18n="majorityMatches">Majority matches</p>
+                <strong id="majorityMatches">3 / 5</strong>
+                <span data-i18n="amongScenarios">across the five calls</span>
+              </article>
+            </div>
+
+            <article class="profile-card">
+              <p class="eyebrow dark" data-i18n="profileLabel">Your management read</p>
+              <h3 id="profileHeading"></h3>
+              <p id="profileBody"></p>
+              <div class="strength-list" id="strengthList"></div>
+            </article>
+
+            <article class="cta-card">
+              <p class="eyebrow" data-i18n="nextMove">Your next move</p>
+              <h3 data-i18n="ctaTitle">Great operators still need a second pair of eyes.</h3>
+              <p data-i18n="ctaBody">
+                marql connects your store data, surfaces the decisions with money at stake, and helps you measure what each call was worth.
+              </p>
+              <a class="cta-link" href="https://marql.one/" target="_blank" rel="noreferrer">
+                <span data-i18n="tryMarql">Try marql</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <button class="restart-button" id="restartButton" type="button" data-i18n="restart">Play again</button>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
