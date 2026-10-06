@@ -1247,6 +1247,18 @@ a:focus-visible {
   border-color: var(--cream);
 }
 
+.profile-card .share-button {
+  margin-top: 28px;
+  color: var(--navy);
+  border-color: rgba(1, 13, 31, 0.42);
+}
+
+.profile-card .share-button:hover {
+  color: var(--cream);
+  background: var(--navy);
+  border-color: var(--navy);
+}
+
 @media (max-width: 980px) {
   .intro-screen {
     grid-template-columns: 1fr 0.82fr;
