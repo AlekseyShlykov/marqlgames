@@ -2,7 +2,7 @@ const copy = {
   en: {
     introTitle: "How fast does your store turn signals into revenue?",
     introLead: "Test the decision system behind your store — then leave with three practices you can use today.",
-    start: "start",
+    start: "Start!",
     signal: "SIGNAL",
     averageTime: "AVERAGE TEST TIME",
     averageTimeValue: "2:11 MIN",
@@ -33,7 +33,7 @@ const copy = {
   ru: {
     introTitle: "Как быстро ваш магазин превращает сигналы в выручку?",
     introLead: "Проверьте систему принятия решений — и получите три практики, которые можно применить уже сегодня.",
-    start: "начать",
+    start: "Начать!",
     signal: "СИГНАЛ",
     averageTime: "СРЕДНЕЕ ВРЕМЯ ТЕСТА",
     averageTimeValue: "2:11 МИН",

@@ -2,7 +2,7 @@ const translations = {
   en: {
     introTitle: "How good is your retail instinct?",
     introLead: "Compare your decisions with other operations managers and discover how good you are at running a store.",
-    start: "start",
+    start: "Start!",
     averageTime: "AVERAGE TEST TIME",
     averageTimeValue: "2:11 MIN",
     peerPulse: "Peer pulse",
@@ -43,7 +43,7 @@ const translations = {
   ru: {
     introTitle: "Насколько сильна ваша интуиция в ритейле?",
     introLead: "Сравните свои решения с выбором других операционных менеджеров и узнайте, насколько хорошо вы управляете магазином.",
-    start: "начать",
+    start: "Начать!",
     averageTime: "СРЕДНЕЕ ВРЕМЯ ТЕСТА",
     averageTimeValue: "2:11 МИН",
     peerPulse: "Выбор коллег",
