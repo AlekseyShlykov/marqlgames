@@ -285,6 +285,12 @@ a:focus-visible {
   font-size: 17px;
 }
 
+.start-button > span {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
 .mascot-stage {
   position: relative;
   display: grid;
