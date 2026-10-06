@@ -1196,22 +1196,31 @@ a:focus-visible {
   transform: translateY(-2px);
 }
 
-.restart-button {
+.share-button {
   position: relative;
   z-index: 1;
-  display: block;
-  margin-top: 28px;
-  padding: 0;
-  color: #a8b0bd;
-  background: none;
-  border: 0;
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  margin-top: 18px;
+  padding: 0 20px;
+  color: var(--cream);
+  background: transparent;
+  border: 1px solid rgba(250, 249, 240, 0.45);
+  border-radius: 999px;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.share-button:hover {
+  color: var(--navy);
+  background: var(--cream);
+  border-color: var(--cream);
 }
 
 @media (max-width: 980px) {

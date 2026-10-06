@@ -22,7 +22,9 @@ const translations = {
     ctaTitle: "Great operators still need a second pair of eyes.",
     ctaBody: "marql connects your store data, surfaces the decisions with money at stake, and helps you measure what each call was worth.",
     tryMarql: "Try marql · 1st month free",
-    restart: "Play again",
+    shareResult: "Share result",
+    linkCopied: "Link copied!",
+    shareLead: "My marql retail operator result:",
     conservative: "Conservative",
     calculated: "Calculated",
     bold: "Bold",
@@ -63,7 +65,9 @@ const translations = {
     ctaTitle: "Даже сильному оператору нужна вторая пара глаз.",
     ctaBody: "marql подключается к данным магазина, показывает решения с деньгами на кону и помогает измерить ценность каждого шага.",
     tryMarql: "Попробовать marql · 1-й месяц бесплатно",
-    restart: "Пройти ещё раз",
+    shareResult: "Поделиться результатом",
+    linkCopied: "Ссылка скопирована!",
+    shareLead: "Мой результат в игре marql:",
     conservative: "Консервативный",
     calculated: "Расчётливый",
     bold: "Рисковый",
@@ -232,7 +236,7 @@ const elements = {
   result: document.querySelector("#resultScreen"),
   start: document.querySelector("#startButton"),
   brand: document.querySelector("#brandButton"),
-  restart: document.querySelector("#restartButton"),
+  share: document.querySelector("#shareButton"),
   continue: document.querySelector("#continueButton"),
   kicker: document.querySelector("#questionKicker"),
   progressCurrent: document.querySelector("#progressCurrent"),
@@ -431,6 +435,42 @@ function startGame() {
   showScreen("game");
 }
 
+async function shareResult() {
+  const resultTitle = document.querySelector("#resultTitle").textContent;
+  const shareData = {
+    title: document.title,
+    text: `${t("shareLead")} ${resultTitle}`,
+    url: window.location.href
+  };
+
+  if (navigator.share) {
+    try {
+      await navigator.share(shareData);
+      return;
+    } catch (error) {
+      if (error.name === "AbortError") return;
+    }
+  }
+
+  try {
+    await navigator.clipboard.writeText(`${shareData.text} ${shareData.url}`);
+  } catch {
+    const field = document.createElement("textarea");
+    field.value = `${shareData.text} ${shareData.url}`;
+    field.style.position = "fixed";
+    field.style.opacity = "0";
+    document.body.append(field);
+    field.select();
+    document.execCommand("copy");
+    field.remove();
+  }
+
+  elements.share.textContent = t("linkCopied");
+  window.setTimeout(() => {
+    elements.share.textContent = t("shareResult");
+  }, 1800);
+}
+
 document.querySelectorAll(".language-button").forEach((button) => {
   button.addEventListener("click", () => {
     state.lang = button.dataset.lang;
@@ -442,7 +482,7 @@ document.querySelectorAll(".language-button").forEach((button) => {
 
 elements.start.addEventListener("click", startGame);
 elements.continue.addEventListener("click", continueGame);
-elements.restart.addEventListener("click", resetGame);
+elements.share.addEventListener("click", shareResult);
 elements.brand.addEventListener("click", resetGame);
 
 updateStaticCopy();
