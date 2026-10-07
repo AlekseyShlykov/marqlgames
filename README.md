@@ -10,10 +10,11 @@ python3 -m http.server 4173
 
 Open <http://localhost:4173>.
 
-Two game routes are available:
+Three game routes are available:
 
 - Retail manager scenarios: <http://localhost:4173/>
 - Decision velocity quiz: <http://localhost:4173/desigions/>
+- Dead stock quiz: <http://localhost:4173/dead-stock/>
 
 ## Deploy to GitHub Pages
 

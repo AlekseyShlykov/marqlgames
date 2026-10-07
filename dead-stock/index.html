@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#010d1f" />
+    <meta
+      name="description"
+      content="A five-question marql game about finding and acting on dead stock store by store."
+    />
+    <title>Find the dead stock — a marql retail game</title>
+    <link rel="stylesheet" href="../styles.css?v=20261006-8" />
+    <link rel="stylesheet" href="../desigions/styles.css?v=20261006-6" />
+    <link rel="stylesheet" href="styles.css?v=20261007-1" />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="topbar" aria-label="Site header">
+        <button class="brand" id="brandButton" type="button" aria-label="Back to the start">
+          <span class="brand-logo-shell">
+            <img class="brand-logo" src="../assets/marql-logo-light.svg" alt="marql" />
+          </span>
+        </button>
+
+        <div class="language-switch" role="group" aria-label="Language">
+          <button class="language-button is-active" type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button class="language-button" type="button" data-lang="ru" aria-pressed="false">RU</button>
+        </div>
+      </header>
+
+      <main id="app" tabindex="-1">
+        <section class="screen intro-screen knowledge-intro dead-stock-intro is-active" id="introScreen" aria-labelledby="introTitle">
+          <div class="intro-copy">
+            <h1 id="introTitle" data-i18n="introTitle">Can you find the stock that stopped earning?</h1>
+            <p class="intro-lead" data-i18n="introLead">
+              Make five store-level inventory calls and leave with a practical dead-stock playbook.
+            </p>
+            <button class="primary-button start-button" id="startButton" type="button">
+              <span data-i18n="start">Start!</span>
+            </button>
+          </div>
+
+          <div class="mascot-stage velocity-stage stock-stage" role="img" aria-label="A stock crate mascot ready for an inventory check">
+            <div class="orbit orbit-one" aria-hidden="true"></div>
+            <div class="orbit orbit-two" aria-hidden="true"></div>
+            <div class="velocity-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="mascot-halo" aria-hidden="true"></div>
+            <img src="../assets/Group-6.svg" alt="" />
+            <div class="mascot-note note-top" aria-hidden="true">
+              <span data-i18n="scanLabel">STORE × SKU</span>
+              <strong>90 DAYS</strong>
+            </div>
+            <div class="mascot-note note-bottom" aria-hidden="true">
+              <span data-i18n="averageTime">AVERAGE TEST TIME</span>
+              <strong data-i18n="averageTimeValue">2:11 MIN</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen game-screen knowledge-game dead-stock-game" id="gameScreen" aria-live="polite" aria-labelledby="questionTitle">
+          <div class="game-header">
+            <div>
+              <p class="eyebrow dark" id="questionKicker">Check 01</p>
+              <p class="progress-copy"><span id="progressCurrent">1</span> / 5</p>
+            </div>
+            <div class="progress-track five-step" aria-label="Question progress">
+              <span></span><span></span><span></span><span></span><span></span>
+            </div>
+          </div>
+
+          <div class="question-layout">
+            <aside class="signal-panel" aria-label="Inventory signal">
+              <p class="signal-label" id="signalLabel"></p>
+              <p class="signal-value" id="signalValue"></p>
+              <p class="signal-detail" id="signalDetail"></p>
+              <div class="signal-bars" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="question-mascot motion-sort" id="questionMascot" role="img" aria-label="">
+                <span class="question-mascot-halo" aria-hidden="true"></span>
+                <img id="questionMascotImage" src="../assets/Group-6.svg" alt="" />
+                <span class="question-mascot-shadow" aria-hidden="true"></span>
+              </div>
+            </aside>
+
+            <div class="question-panel">
+              <div class="question-heading">
+                <p class="question-tag" id="questionTag">STORE-LEVEL VIEW</p>
+                <h2 id="questionTitle"></h2>
+                <p id="questionContext"></p>
+              </div>
+
+              <div class="options-grid" id="optionsGrid" role="radiogroup" aria-label="Answer options"></div>
+
+              <div class="lock-panel" id="lockPanel" hidden>
+                <div>
+                  <p class="eyebrow dark" data-i18n="decisionLogged">Decision logged</p>
+                  <p data-i18n="revealLater">We will unpack the inventory logic at the end.</p>
+                </div>
+                <button class="primary-button continue-button" id="continueButton" type="button">
+                  <span data-i18n="next">Next check</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="screen result-screen knowledge-result" id="resultScreen" aria-live="polite" aria-labelledby="resultTitle">
+          <div class="result-intro result-intro-grid">
+            <div>
+              <h2 id="resultTitle"></h2>
+              <p id="resultSummary"></p>
+            </div>
+            <div class="result-score" aria-label="Quiz score">
+              <span data-i18n="score">SCORE</span>
+              <strong id="scoreValue">5 / 5</strong>
+              <div class="score-dots five-score" id="scoreDots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+
+          <div class="answer-review" id="answerReview"></div>
+
+          <article class="today-plan">
+            <div>
+              <p class="eyebrow dark" data-i18n="todayLabel">A practical first scan</p>
+              <h3 data-i18n="todayTitle">Find the money, verify the units, match the action.</h3>
+            </div>
+            <ol>
+              <li><span>01</span><p data-i18n="todayOne">Calculate days of cover for every product and store from the last 90 days of sales.</p></li>
+              <li><span>02</span><p data-i18n="todayTwo">Count flagged stock and separate dead, slow and excess positions.</p></li>
+              <li><span>03</span><p data-i18n="todayThree">Transfer, pause reorders or clear — then rerun the same list in one or two weeks.</p></li>
+            </ol>
+          </article>
+
+          <p class="source-note">
+            <span data-i18n="sourceLabel">Rules and examples are based on the marql article</span>
+            <a href="https://marql.one/blog/how-to-find-dead-stock-in-a-retail-chain" target="_blank" rel="noreferrer" data-i18n="sourceLink">How to Find Dead Stock in a Retail Chain, Store by Store</a>.
+          </p>
+
+          <article class="cta-card knowledge-cta">
+            <div>
+              <p class="eyebrow" data-i18n="ctaEyebrow">From list to action</p>
+              <h3 data-i18n="ctaTitle">marql finds dead stock store by store.</h3>
+              <p data-i18n="ctaBody">
+                Connect POS and ERP data to see days of cover and capital at cost, review transfer drafts and measure what each accepted action changed.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <div class="cta-primary-action">
+                <a class="cta-link cta-pill" href="https://marql.one/" target="_blank" rel="noreferrer" data-i18n="tryMarql">Try marql</a>
+                <p class="cta-offer" data-i18n="freeMonthNote">1st month free</p>
+              </div>
+              <div class="share-control">
+                <button class="share-button" id="shareButton" type="button" data-i18n="shareResult" aria-expanded="false" aria-controls="shareMenu">Share result</button>
+                <div class="share-menu" id="shareMenu" hidden>
+                  <a class="share-platform linkedin" id="linkedinShare" href="#" target="_blank" rel="noreferrer">LinkedIn</a>
+                  <a class="share-platform x-twitter" id="xShare" href="#" target="_blank" rel="noreferrer">X / Twitter</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js?v=20261007-2"></script>
+  </body>
+</html>
